@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Carabao7xis Panel</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #0e0e0e;
+        color: white;
+        text-align: center;
+    }
+
+    /* Tela de login */
+    #login {
+        margin-top: 120px;
+    }
+
+    .login-box {
+        background: #111;
+        width: 300px;
+        margin: auto;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 0 15px #000;
+    }
+
+    input {
+        width: 90%;
+        padding: 12px;
+        margin-top: 12px;
+        border-radius: 8px;
+        border: none;
+        background: #222;
+        color: white;
+        font-size: 16px;
+    }
+
+    button {
+        width: 90%;
+        padding: 14px;
+        margin-top: 12px;
+        border: none;
+        border-radius: 10px;
+        background: white;
+        color: black;
+        font-weight: bold;
+        font-size: 17px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        opacity: 0.7;
+    }
+
+    /* Painel */
+    #painel {
+        display: none;
+        margin-top: 30px;
+    }
+
+    .painel-box {
+        width: 330px;
+        margin: auto;
+        padding: 20px;
+        background: #111;
+        border-radius: 15px;
+        box-shadow: 0 0 10px #000;
+    }
+
+    .func-btn {
+        background: #fff;
+        color: #000;
+        font-weight: bold;
+        margin-top: 12px;
+        padding: 14px;
+        font-size: 17px;
+        border-radius: 10px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .func-btn:hover {
+        opacity: 0.7;
+    }
+
+    #msg {
+        margin-top: 25px;
+        font-size: 16px;
+        color: #00ffea;
+        min-height: 25px;
+    }
+
+    #inject-info {
+        margin-top: 18px;
+        font-size: 14px;
+        color: #ccc;
+    }
+
+    #injetar {
+        background: #00eaff;
+        color: #000;
+        font-weight: bold;
+        margin-top: 20px;
+        padding: 15px;
+        font-size: 18px;
+    }
+
+    /* Slider AIM FOV */
+    .slider-box {
+        margin-top: 25px;
+        text-align: left;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    input[type=range] {
+        width: 100%;
+    }
+</style>
+
+<script>
+function login() {
+    let user = document.getElementById("user").value;
+    let pass = document.getElementById("pass").value;
+
+    if (user === "carabao7xis" && pass === "1234") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("painel").style.display = "block";
+    } else {
+        alert("Usuário ou senha incorretos!");
+    }
+}
+
+function ativar(nome) {
+    document.getElementById("msg").innerText = nome + " ativado com sucesso ✔";
+}
+
+function atualizarFov(valor) {
+    document.getElementById("fovValue").innerText = valor;
+    document.getElementById("msg").innerText = "AIM FOV ajustado para " + valor + "° ✔";
+}
+
+function injetar() {
+    document.getElementById("msg").innerText = "Funções injetadas com sucesso ✔";
+}
+</script>
+
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login">
+    <div class="login-box">
+        <h2>Carabao7xis Panel</h2>
+
+        <input id="user" placeholder="Usuário">
+        <input id="pass" type="password" placeholder="Senha">
+
+        <button onclick="login()">Entrar</button>
+    </div>
+</div>
+
+<!-- PAINEL -->
+<div id="painel">
+    <div class="painel-box">
+
+        <h2>Funções</h2>
+
+        <!-- Slider AIM FOV -->
+        <div class="slider-box">
+            <label><b>AIM FOV:</b> <span id="fovValue">50</span>°</label>
+            <input type="range" min="10" max="120" value="50" 
+                   oninput="atualizarFov(this.value)">
+        </div>
+
+        <button class="func-btn" onclick="ativar('Aimbot')">Aimbot</button>
+        <button class="func-btn" onclick="ativar('Aimbot Rege')">Aimbot Rege</button>
+        <button class="func-btn" onclick="ativar('Norecoil')">Norecoil</button>
+        <button class="func-btn" onclick="ativar('Aimbot 100%')">Aimbot 100%</button>
+        <button class="func-btn" onclick="ativar('Antiban')">Antiban</button>
+        <button class="func-btn" onclick="ativar('Antiblacklist')">Antiblacklist</button>
+        <button class="func-btn" onclick="ativar('Bypass 100%')">Bypass 100%</button>
+
+        <p id="inject-info">Ative as funções e aperte Injetar.<br>  
+        Deixe em segundo plano para funcionar.</p>
+
+        <button id="injetar" onclick="injetar()">Injetar Funções</button>
+
+        <p id="msg"></p>
+
+    </div>
+</div>
+
+</body>
+</html>
